@@ -1,0 +1,90 @@
+Mathematical logic - It’s the most powerful tool we have for reasoning about things that we can’t really comprehend
+Model - We want to model something we see in reality with something we can fit in our heads,A model is typically a collection of objects          and relations between them.
+Axioms - are true statements about the model
+inferences rules - that let us derive new true statements from the axioms.
+Theory - The axioms and inference rules together generate a theory that consists of all statements that can be constructed from the
+         axioms by applying the inference rules.
+Theorem - The rules of the game are that we can’t claim that some statement is true unless it’s a theorem: something
+          we can derive as part of the theory.
+Consistence - A theory is consistent if it can’t prove both P and not-P for any P.
+Standard Axiom System and Models :
+    • The natural numbers N. These are defined using the Peano axioms, and if all you want to do is count, add, and multiply, you don’t          need much else. (If you want to subtract, things get messy.)
+    • The integers Z. Like the naturals, only now we can subtract. Division is still a problem.
+    • The rational numbers Q. Now we can divide. But what about √2?
+    • The real numbers R. Now we have √2. But what about p(−1)?
+    • The complex numbers C. Now we are pretty much done. But what if we want to talk about more than one complex number at a time?
+    • The universe of sets. These are defined using the axioms of set theory, and produce a rich collection of sets that include, among         other things, structures equivalent to the natural numbers, the real numbers,collections of same, sets so big that we can’t even         begin to imagine what they look like, and even bigger sets so big that we can’t use the usual accepted system of axioms to prove         whether they exist or not. Fortunately, in computer science we can mostly stop with finite sets,which makes life less confusing.
+    • Various alternatives to set theory, like lambda calculus, category theory, or second-order arithmetic. We won’t talk about these,         since they generally don’t let you do anything you can’t do already with sets.However, lambda calculus and category theory are           both important to know about if you are interested in programming language theory.
+Prepositional Logic - The basis of mathematical logic is propositional logic, which was mostly invented in ancient Greece.Here the model       is a collection of statements that are either true or false.Here the only statements that are considered are propositions, which         contain no variables. Because propositions contain no variables,they are either always true or always false.
+    Examples of propositions:
+     • 2 + 2 = 4. (Always true).
+     • 2 + 2 = 5. (Always false).
+    Examples of non-propositions:
+     • x + 2 = 4. (May be true, may not be true; it depends on the value of x.)
+     • x · 0 = 0. (Always true, but it’s still not a proposition because of the variable.)
+     • x · 0 = 1. (Always false, but not a proposition because of the variable.)
+   - Operations On Prepositions
+      • Negation: The negation of p is written as ¬p, or sometimes ∼p, −p or p. It has the property that it is false when p is true, and          true when p is false.
+     • Standard or:(inclusive-or) The or of two propositions p and q is written as p ∨ q, and is true as long as at least one, or                possibly both, of p and q is true.
+     • Exclusive or : If you want to exclude the possibility that both p and q are true, you can use exclusive or instead. This is                written as p ⊕ q, and is true precisely when exactly one of p or q is true.
+     • And: The and of p and q is written as p ∧ q, and is true only when both p and q are true
+     • Implication : This is the most important connective for proofs. An implication represents an “if. . . then” claim. If p implies            q,then we write p → q or p ⇒ q.The meaning of p → q is that q is true whenever p is true, and the proposition p → q is true            provided p is false, or q is true, the only way for p → q to be false is for p to be true but q to be false. Because of this, 
+         p→ q can be rewritten as ¬p ∨ q
+     • Biconditional Suppose that p → q and q → p, so that either both p and q are true or both p and q are false. In this case, we              write p ↔ q or p ⇔ q, and say that p holds if and only if q holds.
+     -----------------------------------------------------------------------------------------------
+     NOT                     p ¬p p, ∼p
+     p AND q                 p ∧ q
+     p XOR q                 p ⊕ q
+     p OR q                  p ∨ q
+     p implies q             p → q p ⇒ q, p ⊃ q
+     p if and only if q      p ↔ q p ⇔ q
+    ------------------------------------------------------------------------------------------------
+    The result of applying any of these operations is called a compound proposition.
+    ------------------------------------------------------------------------------------------------
+Truth Table : To define logical operations formally, we give a truth table. This gives, for any combination of truth values (true or                   false, which as computer scientists we often write as 1 or 0) of the inputs, the truth value of the output.Think of each                 row of a truth table as a model for propositional logic, since the only things we can describe in propositional logic are               whether particular propositions are true or not. Constructing a truth table corresponds to generating all possible models.
+Tautology - A compound proposition that is true no matter what the truth-values of the propositions it contains is called a tautology.               For example, p → p, p ∨ ¬p, and ¬(p ∧ ¬p) are all tautologies, as can be verified by constructing truth tables. If a                     compound proposition is always false, it’s a contradiction. The negation of a tautology is a contradiction and vice versa.               The most useful class of tautologies are logical equivalences. This is a tautology of the form X ↔ Y , where X and Y are                 compound propositions. In this case, X and Y are said to be logically equivalent and we can substitute one for the other in             more complex propositions. We write X ≡ Y if X and Y are logically equivalent.
+         Some Logical equivalences : 
+           - p ∧ ¬p ≡ 0 - law of non-contradiction
+           - p ∨ p ≡ p
+           - p ∨ ¬p ≡ 1 - law of the excluded middle
+           - q ∨ 1 ≡ 1
+           - P ↔ 0 ≡ ¬P
+           - P ↔ 1 ≡ P
+           - P → 0 ≡ ¬P
+           - P → 1 ≡ 1
+           - P ⊕ 0 ≡ P
+           - P ⊕ 1 ≡ ¬P
+           - 0 → P ≡ 1
+           - 1 → P ≡ P
+           - p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r) - Distributive Law
+           - p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r) - Distributive Law
+           - (p → r) ∨ (q → r) ≡ (p ∧ q) → r
+           - ¬¬p ≡ p Double negation
+           - ¬(p ∧ q) ≡ ¬p ∨ ¬q De Morgan’s law
+           - ¬(p ∨ q) ≡ ¬p ∧ ¬q De Morgan’s law
+           - p ∧ q ≡ q ∧ p Commutativity of AND
+           - p ∨ q ≡ q ∨ p Commutativity of OR
+           - p ∧ (q ∧ r) ≡ (p ∧ q) ∧ r Associativity of AND
+           - p ∨ (q ∨ r) ≡ (p ∨ q) ∨ r Associativity of OR
+           - p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r) AND distributes over OR
+           - p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r) OR distributes over AND
+           - p → q ≡ ¬p ∨ q Equivalence of implication and OR
+           - p → q ≡ ¬q → ¬p Contraposition
+           - p ↔ q ≡ (p → q) ∧ (q → p) Expansion of if and only if
+           - p ↔ q ≡ ¬p ↔ ¬q Inverse of if and only f
+           - p ↔ q ≡ q ↔ p Commutativity of if and only if
+Normal Forms - A compound proposition is in conjunctive normal form (CNF for short) if it is obtained by ANDing together ORs of one or                   more variables or their negations (an OR of one variable is just the variable itself). A compound proposition is in                     disjunctive normal form.which means it’s an OR of ANDs.
+Predicate Logic - Predicate logic adds both constants (stand-ins for objects in the model like “George Washington”) and predicates 
+     (stand-ins for properties like “is a fish”). It also lets us quantify over variables and make universal statements like “For all x,        if x is a fish then x is green.”
+Predicates - statements whose truth-value depends on what concrete object takes the place of the variable. Predicates are often                       abbreviated by single capital letters followed by a list of arguments. e.g H(x) = “x is human.”
+Quantifiers - H is true for many different values of their arguments.we bind the variables using quantifiers, which state whether the                 claim we are making applies to all values of the variable (universal quantification), or whether it may only apply to some              (existential quantification).
+Universal Quantifiers - The universal quantifier ∀ (pronounced “for all”) says that a statement must be true for all values of a variable within some universe of allowed values (which is often implicit). For example, “all humans are mortal” could be written ∀x : Human(x) → Mortal(x) and “if x is positive then x + 1 is positive” could be written ∀x : x > 0 → x + 1 > 0.
+Existential Quantifiers - The existential quantifier ∃ (pronounced “there exists”) says that a statement must be true for at least one                             value of the variable. So “some human is mortal” becomes ∃x : Human(x) ∧ Mortal(x).
+Negation And Quantifiers - 
+       ¬∀x : P(x) ≡ ∃x : ¬P(x).
+       ¬∃x : P(x) ≡ ∀x : ¬P(x).
+Function -  symbol looks like a predicate but instead of computing a truth value it returns an object. Function symbols may take zero or             more arguments. The special case of a function symbol with zero arguments is called a constant.
+Equality - The equality predicate =, written x = y, is typically included as a standard part of predicate logic. The interpretation of              x= y is that x and y are the same element of the domain. Equality satisfies the reflexivity axiom ∀x : x = x and the                    substitution axiom schema: ∀x∀y : (x = y → (P x ↔ P y)) where P is any predicate. This immediately gives a substitution rule            that says x = y, P(x) `  P(y). 
+Uniqueness - The abbreviation ∃!xP(x) says “there exists a unique x such that P(x).” This is short for ∃x(P(x) ∧ (∀y : P(y) → x = y)), which we can read as “there is an x for which P(x) is true, and any y for which P(y) is true is equal to x.”
+
+
